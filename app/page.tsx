@@ -4,7 +4,7 @@ import React , {useState} from "react";
 import { Input } from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
 import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue,} from "@/components/ui/select"
-
+import {FormFile} from "@/components/component/form-file"
 
 
 
@@ -33,21 +33,23 @@ return (
 <div className="w-[85vh] h-[75vh]">
 
 
-<form  onSubmit={calcule} className="w-full h-full rounded-md border border-purple-200 shadow-lg p-8 bg-slate-300 flex justify-center items-center flex-col gap-4">
+<form  onSubmit={calcule} className="w-full h-full rounded-md border border-purple-200 shadow-xl p-8 bg-slate-300 flex justify-center items-center flex-col gap-4">
 <h1 className="font-semibold text-2xl text-center mb-4">Calculateur de IMC</h1>
 
 
 <Input  type="text" name="taille" value={taille} onChange={(e) => setTaille(e.target.value)} required placeholder="Entrez votre taille" onChange={(e) => setTaille(e.target.value)}  className="w-15 h-10 rounded-md border border-gray-300 px-4"/>
 
-<Select  value={mesure} onChange={(value) => setMesure(value)}>
+
+<Select value={mesure} onChange={(value : string) => setMesure(value as string)}>
 
   <SelectTrigger className="w-[180px]">
     <SelectValue placeholder="Unité de mesure" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="light">metre(m)</SelectItem>
-    <SelectItem value="dark">centimetre(cm)</SelectItem>
+    <SelectItem value="metre">metre(m)</SelectItem>
+    <SelectItem value="centimetre">centimetre(cm)</SelectItem>
   </SelectContent>
+
 </Select>
 
 <Input  type="text" name="poids"  value={poids} onChange={(e) => setPoids(e.target.value)}
@@ -60,7 +62,18 @@ return (
 
 </form>
 
+
+
 </div>
+
+
+<div>
+
+
+
+
+</div>
+
 </main>
 
 
