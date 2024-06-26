@@ -8,7 +8,7 @@ export function FormFile() {
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
-        <CardTitle>Calculateur d'IMC</CardTitle>
+        <CardTitle>Calculateur d&apos;IMC</CardTitle>
         <CardDescription>
           Calculez votre indice de masse corporelle (IMC) en remplissant le formulaire ci-dessous.
         </CardDescription>
@@ -35,7 +35,7 @@ export function FormFile() {
             <Input id="weight" type="number" placeholder="Entrez votre poids" />
           </div>
           <Button type="submit" className="w-full">
-            Calculer l'IMC
+            Calculer l&apos;IMC
           </Button>
         </form>
       </CardContent>

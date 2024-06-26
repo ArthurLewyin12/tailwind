@@ -37,15 +37,15 @@ return (
 <h1 className="font-semibold text-2xl text-center mb-4">Calculateur de IMC</h1>
 
 
-<Input  type="text" name="taille" value={taille} onChange={(e) => setTaille(e.target.value)} required placeholder="Entrez votre taille" onChange={(e) => setTaille(e.target.value)}  className="w-15 h-10 rounded-md border border-gray-300 px-4"/>
+<Input  type="text" name="taille" value={taille} onChange={(e) => setTaille(e.target.value)} required placeholder="Entrez votre taille"  className="w-15 h-10 rounded-md border border-gray-300 px-4"/>
 
 
-<Select value={mesure} onChange={(value : string) => setMesure(value as string)}>
+<Select value={mesure} onValueChange={(e : any) => { console.log(e) ;setMesure(e)}}>
 
   <SelectTrigger className="w-[180px]">
     <SelectValue placeholder="Unité de mesure" />
   </SelectTrigger>
-  <SelectContent>
+  <SelectContent >
     <SelectItem value="metre">metre(m)</SelectItem>
     <SelectItem value="centimetre">centimetre(cm)</SelectItem>
   </SelectContent>
@@ -61,25 +61,8 @@ return (
 {imc > 0 && <p className="text-md font-semibold ">Votre IMC est : {imc}</p>}
 
 </form>
-
-
-
 </div>
-
-
-<div>
-
-
-
-
-</div>
-
 </main>
 
-
-
-
 );
-
-
 }
