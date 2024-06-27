@@ -4,7 +4,6 @@ import React , {useState} from "react";
 import { Input } from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
 import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue,} from "@/components/ui/select"
-import {FormFile} from "@/components/component/form-file"
 
 
 
@@ -14,6 +13,7 @@ const [taille,setTaille] = useState("");
 const [poids,setPoids] = useState("");
 const [imc,setImc] = useState(0);
 const [mesure,setMesure] = useState("metre");
+const [texte,setTexte] = useState("");
 
 
 const calcule = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,6 +21,17 @@ e.preventDefault();
 const tailleEnMetre = mesure === "centimetre" ? parseFloat(taille)/100 : parseFloat(taille);
 const poidsEnKg = parseFloat(poids);
 const imcCalcul = poidsEnKg / (tailleEnMetre * tailleEnMetre);
+
+if(imc < 24.9 && imc > 18.5 ) {
+  setTexte("vous etes dans un état normal.");
+  } else if(imc < 18.5) {
+   setTexte("Votre poids est insuffisant,cela peut entrainer des problèmes pour  votre santé.");}
+  else if(imc > 25 && imc < 29.9) {
+    setTexte("Vous etes en excès de poids, cela peut entrainer certains risques pour votre santé.");
+  } else if(imc > 30) {
+    setTexte("vous etes en état d'obesité,vous etes grandement en danger.");
+  }
+
 setImc(imcCalcul);
 
 
@@ -59,6 +70,9 @@ return (
 <Button variant="outline" type="submit">Calculer</Button>
 
 {imc > 0 && <p className="text-md font-semibold ">Votre IMC est : {imc}</p>}
+
+<p className="text-md font-semibold">{texte}</p>
+
 
 </form>
 </div>
